@@ -7,8 +7,7 @@ typedef long long lld;
 /* Strassen's Algorithm for matrix multiplication 
 Complexity: O(n^2.808) */
 
-inline lld** MatrixMultiply(lld** a, lld** b, int n, 
-									int l, int m) 
+inline lld** MatrixMultiply(lld** a, lld** b, int n, int l, int m) 
 { 
 	lld** c = new lld*[n]; 
 	for (int i = 0; i < n; i++) 
@@ -25,8 +24,7 @@ inline lld** MatrixMultiply(lld** a, lld** b, int n,
 	return c; 
 } 
 
-inline lld** Strassen(lld** a, lld** b, int n, 
-								int l, int m) 
+inline lld** Strassen(lld** a, lld** b, int n, int l, int m) 
 { 
 	if (n == 1 || l == 1 || m == 1) 
 		return MatrixMultiply(a, b, n, l, m); 
