@@ -3,7 +3,7 @@ A community-built repository which includes most of the important algorithms
 
 ## What is this repository for?
 
-This is repository of many useful algorithms implemented in different languages. Every computer science student should know these.
+This is list of many useful algorithms implemented across different languages. Every computer science student should know these.
 
 ## Who can contribute for this repository?
 
@@ -13,7 +13,7 @@ Anyone. Absolutely anyone can contribute to this repository. Please check the ru
 
 ## How to contribute?
 
-- Add an issue to this repo stating Algorithm Name and Language
+- Add an issue to this repository stating Algorithm Name and Language
 - Fork this repository
 - Pick an Algorithm and a Language
 - Add it to your repository in the directory order `[repository root]/Algorithm Type/Algorithm Name/Language/`
@@ -22,6 +22,6 @@ Anyone. Absolutely anyone can contribute to this repository. Please check the ru
 
 ## Rules
 
-- Please do not spam pull requests for the sake of Hacktoberfest.
-- No duplicate entries, please check if the code is existing or not before you start submiting.
+- Please do not spam pull request for the sake of Hacktoberfest.
+- No duplicate entries. Please check if the code is existing or not before you start submiting.
 - Star this repository to show appreciation towards public efforts.
