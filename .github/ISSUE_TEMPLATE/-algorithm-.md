@@ -2,7 +2,7 @@
 name: "[Algorithm]"
 about: Base issue template for hacktoberfest
 title: "[Algorithm] - Name"
-labels: hacktoberfest
+labels: Hacktoberfest
 assignees: ''
 
 ---
