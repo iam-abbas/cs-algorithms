@@ -61,10 +61,6 @@ void printArray(int arr[], int size)
 
 int main()
 {
-  
-  freopen("input.txt","r",stdin);
-  freopen("output.txt","w",stdout);
-
   	int arr[] = {80, 15, 19, 90, 11, 13, 32};  
     int n = sizeof(arr)/sizeof(arr[0]); 
 
