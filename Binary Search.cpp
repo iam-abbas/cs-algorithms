@@ -34,6 +34,7 @@ int main()
 {
 	int arr[50],n ;
 	int result ;  
+	cout << "Enter the no. of elements do u want to enter" ;
 	cin >> n ; 
 
 	cout << "Enter the elements that you want to insert in the Array " << endl ; 
