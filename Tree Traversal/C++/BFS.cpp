@@ -4,19 +4,19 @@ int cost[10][10],i,j,k,n,qu[10],front,rare,v,visit[10],visited[10];
 int main()
 {
     int m;
-    cout <<"Enter no of vertices(max 9):";
+    cout <<"Enter no of nodes(max 9):";
     cin >> n;
     cout <<"Enter no of edges:";
     cin >> m;
-    cout <<"\nEnter edges starting from intial vertex: \n";
+    cout <<"\nEnter edges starting from source node: \n";
     for(k=1; k<=m; k++)
     {
         cin >>i>>j;
         cost[i][j]=1;
     }
-    cout <<"Re-enter initial vertex to traverse from:";
+    cout <<"Re-enter source node to traverse from:";
     cin >>v;
-    cout <<"Visitied vertices:";
+    cout <<"Visitied nodes:";
     cout <<v<<" ";
     visited[v]=1;
     k=1;
