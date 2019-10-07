@@ -23,7 +23,7 @@ def cocktailSort(unsorted):
 
 
 def test():
-    arr = [3,4,8,76,45,3,1,0,5,-34]
+    arr = [3,4,8,76,45,3,1,0,5,-34, 23]
     cocktailSort(arr)
 
 
