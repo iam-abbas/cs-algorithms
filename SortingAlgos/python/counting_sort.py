@@ -1,4 +1,4 @@
-def sort(array: list) -> list:
+def counting_sort(array: list) -> list:
     """
     Implementation of the linear O(n) Counting Sort algorithm
 
@@ -35,3 +35,21 @@ def sort(array: list) -> list:
         count[array[i]] -= 1
 
     return sorted_arr
+
+
+if __name__ == "__main__":
+    import random
+
+    NUM_VALUES = 10
+    MAX_VALUE = 100
+
+    # Uncomment to generate consistent random values between each run
+    # random.seed(0xd34db33f)
+
+    # Generate list of NUM_VALUES random values in range [0, MAX_VALUE]
+    unsorted = [random.randint(0, NUM_VALUES) for _ in range(0, MAX_VALUE + 1)]
+
+    # Perform sort, asserting result matches Python's default sorting functionality
+    sorted_arr = counting_sort(unsorted)
+    print("Sorted successfully!" if sorted_arr == sorted(unsorted) else "Did not sort!")
+        
