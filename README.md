@@ -27,3 +27,4 @@ Anyone. Absolutely anyone can contribute to this repository. Please check the ru
 
 - Please do not spam pull request for the sake of Hacktoberfest.
 - No duplicate entries, Please check if the code is existing or not before you start submiting.
+- Star this repository to show appreciation towards public efforts.
