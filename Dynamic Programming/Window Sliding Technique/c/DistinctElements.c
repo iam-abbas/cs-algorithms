@@ -12,10 +12,8 @@ No.of distinct elements in the sub-array { 2, 3, 2, 1, 4 } is 4
 No.of distinct elements in the sub-array { 3, 2, 1, 4, 5 } is 5
 */
 #include <stdio.h>
-
 void findDistinctCount(int a[], int n, int k)
 {
-	
 	for (int x = 0; x <= n - k; x++)
 	{
 		int distinct = 0;
