@@ -8,11 +8,11 @@ assignees: ''
 ---
 
 # CS - Algorithm
-[ ]  This algorithm is not available in the repository currently.
-[ ] If it is, My Algorithm is implemented in a different method.
+- [ ]  This algorithm is not available in the repository currently.
+- [ ] If it is, My Algorithm is implemented in a different method.
 
-## Information
+##  Information
 
-**Algorithm Name: **
+- **Algorithm Name:**
 
-**Language: **
+- **Language:**
