@@ -3,7 +3,7 @@
 #include <bits/stdc++.h> 
 using namespace std; 
 
-void swap(int *xp, int *yp) 
+void swap(int *xp, int *yp) //swapping the two numbers
 { 
 	int temp = *xp; 
 	*xp = *yp; 
