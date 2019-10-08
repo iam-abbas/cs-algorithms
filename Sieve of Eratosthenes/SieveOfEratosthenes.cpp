@@ -62,9 +62,13 @@ void dispPrimes(int limit)
 		cout << "ERROR: Limit Set to 0" << endl;
 	}
 }
+/*
+
+Dummy main to check Function
 
 int main()
 {
-	dispPrimes(100);
+	dispPrimes(0);
 	return 0;
 }
+*/
