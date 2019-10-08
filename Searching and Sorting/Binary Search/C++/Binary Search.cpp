@@ -1,6 +1,7 @@
 // Coding Binary Search Algorithm through Functions Topic Approach 
 #include<iostream>
 using namespace std ; 
+//Function that implements the binary search algorithm
 int BinarySearch(int arr[] ,int n , int val )
 {
 	int start=0 ; 
@@ -29,7 +30,7 @@ int BinarySearch(int arr[] ,int n , int val )
 	return -1 ; 
 
 }
-
+//Driver code for the function
 int main()
 {
 	int arr[50],n ;
