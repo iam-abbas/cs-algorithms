@@ -1,4 +1,4 @@
-// C program for different tree traversals 
+// C++ program for different tree traversals 
 #include <iostream> 
 using namespace std; 
   
