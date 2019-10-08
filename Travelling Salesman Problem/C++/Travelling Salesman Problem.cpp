@@ -9,10 +9,10 @@ void takeInput()
 {
 	int i,j;
  
-	cout<<"Enter the number of villages: ";
-	cin>>n;
+	cout<<"Enter the number of villages: "; //Take input for number of destinations to be visited
+	cin>>n; 
  
-	cout<<"\nEnter the Cost Matrix\n";
+	cout<<"\nEnter the Cost Matrix\n";             //input of the cost matrix
  
 	for(i=0;i < n;i++)
 	{
@@ -26,7 +26,7 @@ void takeInput()
  
 	cout<<"\n\nThe cost list is:";
  
-	for( i=0;i < n;i++)
+	for( i=0;i < n;i++)                                  //Calculates the cost list for the matrix
 	{
 		cout<<"\n";
  
@@ -34,7 +34,7 @@ void takeInput()
 			cout<<"\t"<<ary[i][j];
 	}
 }
- 
+//Computes the least cost and returns the value 
 int least(int c)
 {
 	int i,nc=999;
@@ -56,7 +56,7 @@ int least(int c)
  
 	return nc;
 }
- 
+//Provides min cost for a city
 void mincost(int city)
 {
 	int i,ncity;
@@ -77,7 +77,7 @@ void mincost(int city)
  
 	mincost(ncity);
 }
- 
+ //Driver code for the above functions
 int main()
 {
 	takeInput();
