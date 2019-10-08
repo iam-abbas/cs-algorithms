@@ -1,7 +1,7 @@
 <h1 align="center">Computer Science - Algorithms</h1>
 
 <p align="center">
-<img style="padding:10px;" src="https://img.shields.io/badge/Open%20Source-💕%20-9cf?style=for-the-badge">
+<img style="padding:10px;" src="https://img.shields.io/badge/Open%20Source-💕%20-9cf?style=for-the-badge"><br>
 <img style="padding:10px;" src="https://img.shields.io/github/contributors/iam-abbas/cs-algorithms?style=flat-square">
 <img style="padding:10px;" src="https://img.shields.io/github/hacktoberfest/2019/iam-abbas/cs-algorithms?suggestion_label=Hacktoberfest&style=flat-square">
 <img style="padding:10px;" src="https://img.shields.io/github/forks/iam-abbas/cs-algorithms?label=Forks&style=flat-square">
