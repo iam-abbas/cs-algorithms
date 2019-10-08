@@ -45,7 +45,7 @@ for y in comps:
     print(y,"fail chance:",fails/1000)
 
 print("\nCarmichael numbers list and chances to fail")
-#showcases the carmichael numbers and how they are less likely to fail the test than other non carmichael composite numbers
+#showcases the carmichael numbers and how they are less likely to fail the test than other non-carmichael composite numbers
 car=[561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401]
 for y in car:
     fails=0
