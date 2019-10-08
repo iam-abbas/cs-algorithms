@@ -8,9 +8,12 @@
 <img style="padding:10px;" src="https://img.shields.io/github/stars/iam-abbas/cs-algorithms?style=flat-square">
 <img style="padding:10px;" src="https://img.shields.io/github/languages/count/iam-abbas/cs-algorithms?style=flat-square">
 <img style="padding:10px;" src="https://img.shields.io/github/license/iam-abbas/cs-algorithms?style=flat-square">
-</P>
+
 
 A community-built repository which includes most of the important algorithms to help programmers.
+
+</p>
+
 ## What is this repository for?
 
 This is list of many useful algorithms implemented across different languages. Every computer science student should know these.
