@@ -1,9 +1,16 @@
-# Computer Science - Algorithms
-![Open Source](https://img.shields.io/badge/Open%20Source-💕%20-9cf?style=for-the-badge)  
-![GitHub contributors](https://img.shields.io/github/contributors/iam-abbas/cs-algorithms?style=flat-square)  ![GitHub Hacktoberfest combined status (suggestion label override)](https://img.shields.io/github/hacktoberfest/2019/iam-abbas/cs-algorithms?suggestion_label=Hacktoberfest&style=flat-square)  ![GitHub forks](https://img.shields.io/github/forks/iam-abbas/cs-algorithms?label=Forks&style=flat-square)  ![GitHub stars](https://img.shields.io/github/stars/iam-abbas/cs-algorithms?style=flat-square)  ![GitHub language count](https://img.shields.io/github/languages/count/iam-abbas/cs-algorithms?style=flat-square)  ![GitHub](https://img.shields.io/github/license/iam-abbas/cs-algorithms?style=flat-square)
+<h1 align="center">Computer Science - Algorithms</h1>
+
+<p align="center">
+<img style="padding:10px;" src="https://img.shields.io/badge/Open%20Source-💕%20-9cf?style=for-the-badge">
+<img style="padding:10px;" src="https://img.shields.io/github/contributors/iam-abbas/cs-algorithms?style=flat-square">
+<img style="padding:10px;" src="https://img.shields.io/github/hacktoberfest/2019/iam-abbas/cs-algorithms?suggestion_label=Hacktoberfest&style=flat-square">
+<img style="padding:10px;" src="https://img.shields.io/github/forks/iam-abbas/cs-algorithms?label=Forks&style=flat-square">
+<img style="padding:10px;" src="https://img.shields.io/github/stars/iam-abbas/cs-algorithms?style=flat-square">
+<img style="padding:10px;" src="https://img.shields.io/github/languages/count/iam-abbas/cs-algorithms?style=flat-square">
+<img style="padding:10px;" src="https://img.shields.io/github/license/iam-abbas/cs-algorithms?style=flat-square">
+</P>
 
 A community-built repository which includes most of the important algorithms to help programmers.
-
 ## What is this repository for?
 
 This is list of many useful algorithms implemented across different languages. Every computer science student should know these.
