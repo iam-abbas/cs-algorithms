@@ -121,11 +121,10 @@ int get_degree(bitset<BYTE_SIZE>& polynomial)
 bitset<BYTE_SIZE> polynomial_multiplication(bitset<BYTE_SIZE>& poly1, bitset<BYTE_SIZE>& poly2)
 {
     bitset<BYTE_SIZE> modulo_polynomial(0b00011011);
-    //int degree = get_degree(poly1);
     bitset<BYTE_SIZE> Poly2 = poly2;
     bitset<BYTE_SIZE> result;
     bool xor_flag = false;
-    for(int i = 0; i < 8; i++)
+    for(int i = 0; i < 8; i++) // Try get_degree()
     {
         if(Poly2.test(7)){
             xor_flag = true;
@@ -138,9 +137,7 @@ bitset<BYTE_SIZE> polynomial_multiplication(bitset<BYTE_SIZE>& poly1, bitset<BYT
             Poly2 = Poly2 ^ modulo_polynomial;
             xor_flag = false;
         } 
-        //cout << Poly2 << endl;   
     }
-    //cout << result;
     return result;
 }
 
@@ -170,7 +167,6 @@ bitset<WORD_SIZE> SubWord(bitset<WORD_SIZE> input)
         if(c > 9) {
             c = (int) BinaryToHex(col) - 'a' + 10;
         }
-        //cout << "row = " << r << " col = " << c << endl;
         result = result + (SubByteTable[r][c]).to_string();
     }
     return bitset<WORD_SIZE>(result); 
@@ -262,21 +258,11 @@ void AES::KeyExpansion()
             }
             else
             {
-                // printBitsetInHex(KeyMatrix[i-1][3]); cout << endl;
                 bitset<WORD_SIZE> t = SubWord(RotWord(KeyMatrix[i-1][3])) ^ RCons[i-1];
-                // cout << " Round # "<< i <<" t = "; printBitsetInHex(t); cout << endl;
                 KeyMatrix[i][j] = t ^ KeyMatrix[i-1][0];
             }   
         }
     }
-    /*
-    for(int i = 0; i < 11; i++){
-        for(int j = 0; j < 4; j++){
-            printBitsetInHex(KeyMatrix[i][j]);
-        }
-        cout << endl;
-    }
-    */
 }
 
 void AES::printState(bool e_or_d)
@@ -304,9 +290,7 @@ void AES::printState(bool e_or_d)
 
 string AES::AES_Encryption(string& PlainText, bool is_empty)
 {
-    //cout << PlainText << endl;
-    // Build initial state
-    if(is_empty)
+    if(is_empty) // First block of 128 bits
     {
         for(int i = 0; i < 4; i++)
         {
@@ -318,7 +302,7 @@ string AES::AES_Encryption(string& PlainText, bool is_empty)
             state.push_back(word);
         }
     }
-    else
+    else // Subsequent blocks of 128 bits
     {
         int k = 0;
         for(int i = 0; i < 4; i++)
@@ -330,14 +314,11 @@ string AES::AES_Encryption(string& PlainText, bool is_empty)
             }
         }
     }
-    //cout << "Initial State!" << endl;
-    //printState();
+    
     for(int round = 0; round <= 10; round++)
     {
         AES_Encryption_Round(round);
     }
-    //cout << "Encryption is: " << endl;
-    // printState();
     string result = "";
     for(int i = 0; i < 4; i++){
         for(int j = 0; j < 4; j++){
@@ -457,8 +438,6 @@ void AES::AES_Encryption_Round(int round_number)
         ShiftRows();
         AddRoundKey(11, true);
     }
-    //cout << "Output of Round " << round_number << " is " << endl;
-    //printState();
 }
 
 string AES::AES_Decryption(string& CipherText, bool is_empty)
@@ -514,8 +493,6 @@ void AES::AES_Decryption_Round(int round_number)
         InvSubBytes();
         AddRoundKey(1, false);
     }
-    //cout << "Output of Round " << round_number << " is " << endl;
-    //printState();
 }
 
 void AES::InvMixColumns()
