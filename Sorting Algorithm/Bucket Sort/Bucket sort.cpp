@@ -1,43 +1,74 @@
-// C++ program to sort an array using bucket sort 
-#include <iostream> 
-#include <algorithm> 
-#include <vector> 
+/* Created by Saurav Dubey */
+
+#include <bits/stdc++.h> 
 using namespace std; 
-
-// Function to sort arr[] of size n using bucket sort 
-void bucketSort(float arr[], int n) 
+  
+// Function to sort arr[] of size n using bucket sort
+void bucketSort(vector<float> &arr, int n) 
 { 
-	// 1) Create n empty buckets 
-	vector<float> b[n]; 
-	
-	// 2) Put array elements in different buckets 
-	for (int i=0; i<n; i++) 
-	{ 
-	int bi = n*arr[i]; // Index in bucket 
-	b[bi].push_back(arr[i]); 
-	} 
-
-	// 3) Sort individual buckets 
-	for (int i=0; i<n; i++) 
-	sort(b[i].begin(), b[i].end()); 
-
-	// 4) Concatenate all buckets into arr[] 
-	int index = 0; 
-	for (int i = 0; i < n; i++) 
-		for (int j = 0; j < b[i].size(); j++) 
-		arr[index++] = b[i][j]; 
+    // 1) Create n empty buckets 
+    vector<float> b[n]; 
+  
+    // 2) Put array elements in different buckets 
+    for (int i=0; i<n; i++) 
+    { 
+        int bi = n*arr[i]; // Index in bucket 
+        b[bi].push_back(arr[i]); 
+    } 
+  
+    // 3) Sort individual buckets 
+    for (int i=0; i<n; i++) 
+        sort(b[i].begin(), b[i].end()); 
+  
+    // 4) Concatenate all buckets into arr[] 
+    int index = 0; 
+    arr.clear(); 
+    for (int i = 0; i < n; i++) 
+        for (int j = 0; j < b[i].size(); j++) 
+            arr.push_back(b[i][j]); 
 } 
-
-/* Driver program to test above funtion */
+  
+// This function mainly slpits array into two and then calls bucketSort() for two arrays. 
+void sortMixed(float arr[], int n) 
+{ 
+    vector<float>Neg ; 
+    vector<float>Pos; 
+  
+    // traverse array elements 
+    for (int i=0; i<n; i++) 
+    { 
+        if (arr[i] < 0) 
+  
+            // store -Ve elements by 
+            // converting into +ve element 
+            Neg.push_back (-1 * arr[i]) ; 
+        else
+            // store +ve elements 
+            Pos.push_back (arr[i]) ; 
+    } 
+  
+    bucketSort(Neg, (int)Neg.size()); 
+    bucketSort(Pos, (int)Pos.size()); 
+  
+    // First store elements of Neg[] array by converting into -ve 
+    for (int i=0; i < Neg.size(); i++) 
+        arr[i] = -1 * Neg[ Neg.size() -1 - i]; 
+  
+    // store +ve element 
+    for(int j=Neg.size(); j < n; j++) 
+        arr[j] = Pos[j - Neg.size()]; 
+} 
+  
+/* Driver program to test above function it will handle the negative numbers as well */
 int main() 
 { 
-	float arr[] = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434}; 
-	int n = sizeof(arr)/sizeof(arr[0]); 
-	bucketSort(arr, n); 
-
-	cout << "Sorted array is \n"; 
-	for (int i=0; i<n; i++) 
-	cout << arr[i] << " "; 
-	return 0; 
+    float arr[] = {-0.897, 0.565, 0.656, 
+                   -0.1234, 0, 0.3434}; 
+    int n = sizeof(arr)/sizeof(arr[0]); 
+    sortMixed(arr, n); 
+  
+    cout << "The resulted sorted array is \n"; 
+    for (int i=0; i<n; i++) 
+        cout << arr[i] << " "; 
+    return 0; 
 } 
-
