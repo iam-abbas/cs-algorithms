@@ -1,3 +1,6 @@
+import java.util.HashSet;
+import java.util.Set;
+
 // A linked list node
 class Node
 {
