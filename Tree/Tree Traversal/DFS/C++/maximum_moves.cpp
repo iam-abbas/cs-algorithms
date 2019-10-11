@@ -1,9 +1,7 @@
-// https://www.codechef.com/EXPP2019/problems/EXUND
-
 /*
 				C++
 				encoding: UTF-8
-				Modified: <11/Oct/2019 10:08:44 PM>
+				Modified: <11/Oct/2019 09:57:40 PM>
 
 				✪ H4WK3yE乡
 				Mohd. Farhan Tahir
@@ -19,7 +17,7 @@ using namespace std;
 
 // clang-format off
 
-#define         ll                     long long
+#define         int                    long long
 #define         ve                     vector
 #define         pb                     push_back
 #define         endl                   "\n"
@@ -44,30 +42,49 @@ void pr (const T& t, const U& u, const ARGS&... args) {
 
 // clang-format on
 
-const int N = 1e6 + 5;
-int arr[N], s[N], tree[4 * N], lazy[4 * N];
-int n, q;
+const int N = 5e5 + 5;
+ve< int > graph[N];
+int depth[N];
+int n, k;
+int ans;
+
+void init () {
+	fr (i, 0, n + 5) {
+		graph[i].clear ();
+		depth[i] = 0;
+	}
+	ans = 0;
+}
+
+int dfs (int node, int parent) {
+	int y = 0;
+	for (int to : graph[node]) {
+		if (to == parent) continue;
+		y = max (y, dfs (to, node));
+	}
+	depth[y]++;
+	return y + 1;
+}
 
 signed main () {
 	ios_base::sync_with_stdio (false), cin.tie (nullptr);
-	cin >> n >> q;
-	fr (i, 1, n + 1) cin >> arr[i];
-	int c = 1;
-	s[1] = 1;
-	fr (i, 2, n + 1) {
-		if (arr[i] % arr[i - 1]) continue;
-	}
-	while (q--) {
-		int t;
-		cin >> t;
-		if (t == 1) {
-			int idx, x;
-			cin >> idx >> x;
-		} else {
-			int idx;
-			cin >> idx;
-			pr (idx);
+	int tc;
+	cin >> tc;
+	while (tc--) {
+		cin >> n >> k;
+		init ();
+		fr (i, 1, n) {
+			int u, v;
+			cin >> u >> v;
+			graph[u].pb (v);
+			graph[v].pb (u);
 		}
+		int x = dfs (1, 1);
+		depth[x]++;
+
+		fr (i, 0, k) ans += depth[i];
+		pr (ans);
 	}
+
 	return 0;
 }
