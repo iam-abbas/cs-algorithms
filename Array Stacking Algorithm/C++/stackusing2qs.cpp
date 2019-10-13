@@ -10,7 +10,7 @@ struct qu2// queue2 declaration {
    qu2 *n2;
    int d2;
 }*f2 = NULL, *r2 = NULL, *q2 = NULL, *p2 = NULL, *np2 = NULL;
-
+   
 void enqueue1(int a) {
    np1 = new qu1;
    np1->d1 = a;
