@@ -64,6 +64,7 @@ void printPreorder(struct Node* node)
     printPreorder(node->right); 
 }  
 
+/* Given a binary tree, print its nodes in Levelorder*/
 void printLevelOrder(Node *root) 
 { 
     // Base Case 
@@ -112,6 +113,6 @@ int main()
   
     cout << "Level Order traversal of binary tree is \n"; 
     printLevelOrder(root); 
-    
+
     return 0; 
 } 
