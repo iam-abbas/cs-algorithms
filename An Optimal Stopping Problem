@@ -1,0 +1,69 @@
+// C++ Program to test 1/e law for Secretary Problem : 
+#include <iostream> 
+#include <time.h> 
+#define e 2.71828 
+using namespace std; 
+
+// To find closest integer of num. 
+int roundNo(float num) 
+{ 
+	return num < 0 ? num - 0.5 : num + 0.5; 
+} 
+
+// Finds best candidate using n/e rule. candidate[] 
+// represents talents of n candidates. 
+void printBestCandidate(int candidate[], int n) 
+{ 
+	// Calculating sample size for benchmarking. 
+	int sample_size = roundNo(n/e); 
+	cout << "\n\nSample size is " << sample_size << endl; 
+
+	// Finding best candidate in sample size 
+	int best = 0; 
+	for (int i = 1; i < sample_size; i++) 
+		if (candidate[i] > candidate[best]) 
+			best = i; 
+
+	// Finding the first best candidate that is 
+	// better than benchmark set. 
+	for (int i = sample_size; i < n; i++) 
+		if (candidate[i] >= candidate[best]) { 
+			best = i; 
+			break; 
+		} 
+
+	if (best >= sample_size) 
+		cout << endl << "Best candidate found is "
+			<< best + 1 << " with talent "
+			<< candidate[best] << endl; 
+	else
+		cout << "Couldn't find a best candidate\n"; 
+} 
+
+int main() 
+{ 
+	int n = 8; 
+
+	// n = 8 candidates and candidate array contains 
+	// talents of n candidate where the largest 
+	// number means highest talented candidate. 
+	int candidate[n]; 
+
+	// generating random numbers between 1 to 8 
+	// for talent of candidate 
+	srand(time(0));	 
+	for (int i = 0; i < n; i++) 
+		candidate[i] = 1 + rand() % 8; 
+
+	cout << "Candidate : "; 
+	for (int i = 0; i < n; i++) 
+		cout << i + 1 << " "; 
+	cout << endl; 
+	cout << " Talents : "; 
+	for (int i = 0; i < n; i++) 
+		cout << candidate[i] << " "; 
+	
+	printBestCandidate(candidate, n); 
+
+	return 0; 
+} 
