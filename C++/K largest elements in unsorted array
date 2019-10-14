@@ -1,0 +1,116 @@
+#include <iostream> 
+using namespace std; 
+
+// Swap function to interchange 
+int swap(int& x, int& y) 
+{ 
+	int temp = x; 
+	x = y; 
+	y = temp; 
+} 
+
+// Min Heap Class 
+class MinHeap { 
+
+	int size; 
+	int* arr; 
+
+public: 
+	// Constructor to initialize the size and arr 
+	MinHeap(int size, int input[]); 
+
+	// heap property for i. 
+	void heapify(int i); 
+
+	// Build the min heap
+	void buildHeap(); 
+}; 
+
+ 
+MinHeap::MinHeap(int size, int input[]) 
+{ 
+	// Initializing arr and size 
+  this->size = size; 
+	this->arr = input; 
+
+	// Building the Min Heap 
+	buildHeap(); 
+} 
+
+void MinHeap::heapify(int i) 
+{ 
+	//Case 1:Leaf Node
+	if (i >= size / 2) 
+		return; 
+
+	// variable to store the smallest element 
+	int smallest; 
+
+	// Index of left node 
+	int left = 2 * i + 1; 
+
+	// Index of right node 
+	int right = 2 * i + 2; 
+
+	 
+	// Compare left node with current i node 
+	smallest = arr[left] < arr[i] ? left : i; 
+
+	// Compare right node with smallest node 
+	if (right < size) 
+		smallest = arr[right] < arr[smallest] 
+							? right : smallest; 
+
+	// If Node i violates the min heap property, swap current node i with smallest to fix the min-heap property and recursively call heapify for node smallest. 
+	if (smallest != i) { 
+		swap(arr[i], arr[smallest]); 
+		heapify(smallest); 
+	} 
+} 
+
+// Build Min Heap 
+void MinHeap::buildHeap() 
+{ 
+	// Calling Heapify for all non leaf nodes 
+	for (int i = size / 2 - 1; i >= 0; i--) { 
+		heapify(i); 
+	} 
+} 
+
+void MaxKelements(int arr[],int size,int k){ 
+	// Creating Min Heap for first K elements
+	MinHeap* m = new MinHeap(k, arr); 
+
+	// Loop For each element in array after the kth element 
+	for (int i = k; i < size; i++) { 
+
+		if (arr[0] > arr[i]) 
+			continue; 
+		else { 
+			arr[0] = arr[i]; 
+			m->heapify(0); 
+		} 
+	} 
+	//Iterate and print K large elements
+	for (int i = 0; i < k; i++) { 
+		cout << arr[i] << " "; 
+	} 
+} 
+
+
+int main() 
+{ 
+
+	int arr[] = { 111, 93, 11, 152, 5, 42, 
+						435, 188, 96, 150, 455 }; 
+
+	int size = sizeof(arr) / sizeof(arr[0]); 
+
+	// Size of Min Heap 
+	int k = 3; 
+
+	MaxKelements(arr,size,k); 
+
+	return 0; 
+} 
+
