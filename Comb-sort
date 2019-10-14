@@ -1,0 +1,69 @@
+/*Refrences: https://w...content-available-to-author-only...s.org/comb-sort/
+*            https://e...content-available-to-author-only...a.org/wiki/Comb_sort
+*/
+/*
+*Time complexicity: Worst Case O(n^2) - Best Case O(n)
+*Space Complexicity: O(1)
+*/
+#include<bits/stdc++.h> 
+using namespace std; 
+ 
+// To find gap between elements 
+int getNextGap(int gap) 
+{ 
+	// Shrink gap by Shrink factor 
+	gap = (gap*10)/13; 
+ 
+	if (gap < 1) 
+		return 1; 
+	return gap; 
+} 
+ 
+// Function to sort a[0..n-1] using Comb Sort 
+void combSort(int a[], int n) 
+{ 
+	// Initialize gap 
+	int gap = n; 
+ 
+	// Initialize swapped as true to make sure that 
+	// loop runs 
+	bool swapped = true; 
+ 
+	// Keep running while gap is more than 1 and last 
+	// iteration caused a swap 
+	while (gap != 1 || swapped == true) 
+	{ 
+		// Find next gap 
+		gap = getNextGap(gap); 
+ 
+		// Initialize swapped as false so that we can 
+		// check if swap happened or not 
+		swapped = false; 
+ 
+		// Compare all elements with current gap 
+		for (int i=0; i<n-gap; i++) 
+		{ 
+			if (a[i] > a[i+gap]) 
+			{ 
+				swap(a[i], a[i+gap]); 
+				swapped = true; 
+			} 
+		} 
+	} 
+} 
+ 
+// Driver code
+int main() 
+{ 
+	int arr[] = {123, 512, 1, 13, 12, -20, 22, -2134, 28, 12, 123, 90, 0}; 
+	int n = sizeof(arr)/sizeof(arr[0]); 
+ 
+	combSort(arr, n); 
+ 
+	printf("Sorted array: \n"); 
+	for (int i=0; i<n; i++) 
+		printf("%d ", arr[i]); 
+  //-2134 -20 0 1 12 12 13 22 28 90 123 123 512
+	return 0; 
+} 
+ 
