@@ -11,7 +11,7 @@ fun main (args : Array<String>) {
     selectionSort(arr)
 }
 
-//function for insertion sort
+//function for selection sort
 
 fun selectionSort(arr : Array<Int>) {
     var n = arr.size
