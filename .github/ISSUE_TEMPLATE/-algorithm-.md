@@ -8,7 +8,8 @@ assignees: ''
 ---
 
 # CS - Algorithm
-- [ ]  This algorithm is not available in the repository currently.
+- [ ] I have starred this repository
+- [ ] This algorithm is not available in the repository currently.
 - [ ] If it is, My Algorithm is implemented in a different method.
 
 ##  Information

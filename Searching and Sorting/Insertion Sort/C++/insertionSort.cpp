@@ -8,6 +8,34 @@ by Divakar Lakhera
 
 */
 
+/**
+
+	Insertion_sort not recursive
+	@parameter 1 : the starting address of the array.
+	@parameter 2 : the starting index from where you want to sort it.
+	@parameter 3 : the last index till which you want to sort.
+
+*/
+
+void insertion_sort(int *arr, int from, int to)
+{
+	int key = 0;
+	int j = 0;
+	
+	for(int i = from + 1; i <= to; i++)
+	{
+		key = arr[i];
+		j = i - 1;
+		while(key < arr[j] && j >= from)
+		{
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j+1] = key;
+	}
+}
+
+
 /*
 
 	void doiSort(int buf[], int len, int maxl)
@@ -22,6 +50,9 @@ by Divakar Lakhera
 		- maxl: length of array to sort
 
 */
+
+
+
 
 void doiSort(int buf[], int len, int maxl)
 {

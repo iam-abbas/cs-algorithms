@@ -1,0 +1,221 @@
+//Program to perform following operations on the singly linked list :
+//Inserting a node (at the start, at the end, in between),
+//deleting a node (starting node, last node, in between node),
+//displaying information stored in the nodes.
+
+#include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+
+struct node{
+  int data;
+  struct node *next;
+};
+
+struct node *makenode(int makedata);
+
+struct node *insbeg(int newdata, struct node *first);
+void insend(int newdata, struct node *first);
+void insbet(int newdata, struct node *first);
+
+struct node *delbeg(struct node *first);
+void delend(struct node *first);
+void delbet(int deldata, struct node *first);
+
+void shownodes(struct node *first);
+
+
+int main(){
+  struct node *head = NULL;
+  int dataf, choice, str = 1;
+
+  if(head == NULL){
+    printf("Lets start a new list: \n");
+    printf("Enter data for node: ");
+    scanf("%d", &dataf);
+
+    head = (struct node *)malloc(sizeof(struct node));
+    head -> data = dataf;
+    head -> next = NULL;
+  }
+
+while(str == 1){
+
+    printf("\nEnter 1, 2 or 3 for Inserting a node at the start, at the end, in between.\n");
+    printf("Enter 4, 5 or 6 for deleting the starting node, last node, an in between node\n");
+    printf("Enter 7 for displaying information stored in the nodes.");
+
+    scanf("%d", &choice);
+
+  switch(choice){
+    case 1:
+      printf("\nEnter the data for the new first node: ");
+      scanf("%d", &dataf);
+      head = insbeg(dataf, head);
+    break;
+
+    case 2:
+      printf("\nEnter the data for the new end node: ");
+      scanf("%d", &dataf);
+      insend(dataf, head);
+    break;
+
+    case 3:
+      printf("\nEnter the data for the new inbetween node: ");
+      scanf("%d", &dataf);
+      insbet(dataf, head);
+      break;
+
+    case 4:
+      printf("\nDeleting the starting node...");
+      head = delbeg(head);
+      break;
+
+    case 5:
+      printf("\nDeleting the ending node...");
+      delend(head);
+      break;
+
+    case 6:
+      printf("\nEnter the data for the node which is to be deleted:");
+      scanf("%d", &dataf);
+      delbet(dataf, head);
+      break;
+
+    case 7:
+      printf("\nShowing all the nodes with data: ");
+      shownodes(head);
+      break;
+  }
+
+printf("\nWant to continue: 1- yes, 0- no\n");
+scanf("%d", &str);
+
+}
+  return 0;
+}
+
+struct node *makenode(int makedata){
+  struct node *ptr;
+  ptr = (struct node *)malloc(sizeof(struct node));
+
+  if(ptr == NULL){
+    printf("\nMemory not available.");
+    exit(1);
+  }
+
+  ptr -> data = makedata;
+  ptr -> next = NULL;
+  return ptr;
+}
+
+struct node *insbeg(int newdata, struct node *first){
+  struct node *temp;
+
+  temp = makenode(newdata);
+
+  temp -> next = first;
+  first = temp;
+
+  return first;
+
+}
+
+void insend(int newdata, struct node *first){
+  struct node *temp, *q;
+  q = first;
+
+  temp = makenode(newdata);
+
+  while(q != NULL){
+
+    if( q -> next == NULL ){
+      q-> next = temp;
+      break;
+    }
+    q = q -> next;
+  }
+}
+
+void insbet(int newdata, struct node *first){
+  int nodeval;
+  bool b = false;
+  struct node *temp, *q;
+  q = first;
+
+  temp = makenode(newdata);
+
+  printf("\nSo where do you want to insert the node? (prev node value after which it will be inserted)");
+  scanf("%d", &nodeval);
+
+  while(q -> data != nodeval){
+
+    if(q -> next -> data == nodeval){
+      b = true;
+      temp -> next = q -> next -> next;
+      q -> next -> next = temp;
+    }
+    q = q -> next;
+  }
+
+  if(b == false){
+    printf("The value you entered doesnt exist.");
+  }
+
+}
+// del
+
+struct node *delbeg(struct node *first){
+  struct node *q, *r;
+  q = first -> next;
+  r = first;
+
+  free(r);
+  r = NULL;
+
+  return q;
+}
+
+void delend(struct node *first){
+  struct node *q, *r;
+  q = first;
+
+  while(q->next != NULL){
+    if(q -> next -> next == NULL){
+      r = q -> next;
+      q -> next = NULL;
+      free(r);
+      r = NULL;
+      break;
+    }
+    q = q-> next;
+  }
+}
+
+void delbet(int deldata, struct node *first){
+  struct node *q, *r;
+  q = first;
+
+  while(q -> data != deldata){
+    if(q -> next -> data == deldata){
+      r = q -> next;
+      q-> next = r -> next;
+      free(r);
+      r = NULL;
+      break;
+    }
+    q = q -> next;
+  }
+}
+
+void shownodes(struct node *first){
+  struct node *q;
+  q = first;
+  printf("\n");
+
+  while(q != NULL){
+    printf("%d -> ", q -> data);
+    q = q -> next;
+  }
+
+}
