@@ -1,4 +1,4 @@
-/* A Naive recursive implementation of LCS problem */
+
 #include <bits/stdc++.h> 
 using namespace std; 
 
