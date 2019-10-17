@@ -1,0 +1,38 @@
+# include <iostream>
+# include <bits/stdc++.h>
+
+using namespace std;
+
+void input(int &n)
+{
+    cin>>n;
+}
+
+void display(int &c)        
+{
+    cout<<c<<"  ";
+}
+
+void fibo(int &n)
+{
+  int a=0, b=1, c=0;
+    
+    while(n--)
+    {
+        display(c);
+        a=b;
+        b=c;
+        c=a+b;
+    }
+}
+
+int main()
+{
+    int n;                    //for no. of elements
+
+    input(n);
+    
+    fibo(n);                  
+    
+    return 0;
+}
