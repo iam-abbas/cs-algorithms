@@ -1,0 +1,32 @@
+
+#include <bits/stdc++.h> 
+#include <boost/multiprecision/cpp_int.hpp> 
+using big_int = boost::multiprecision::cpp_int; 
+using namespace std; 
+  
+int fibo(int n) 
+{ 
+    
+    big_int a = 0; 
+    big_int b = 1; 
+    cout <<a<<"  "<<b<<"  "; 
+      
+    for (int i = 2; i < n; i++) 
+    { 
+        big_int c = a + b; 
+        cout <<c <<"  "; 
+        a = b; 
+        b = c; 
+    } 
+} 
+  
+
+int main() 
+{ 
+    int n; 
+    cin>>n;
+    
+    fibo(n); 
+      
+    return 0; 
+} 
