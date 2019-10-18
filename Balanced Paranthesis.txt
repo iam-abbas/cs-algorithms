@@ -1,0 +1,70 @@
+#include <iostream>
+#include<stack>
+using namespace std;
+
+int length(char *exp){
+int length=0;    
+for(int i=0;exp[i]!='\0';i++)
+length++;
+return length;	
+}
+
+
+
+bool checkBalanced(char *exp){
+    stack<int> st;
+    int l =length(exp);
+    for(int i = 0 ; i < l ; i++){
+        
+        if(exp[i]=='('||exp[i]=='{'||exp[i]=='['){
+         st.push(exp[i]);
+         continue;   
+        }
+        
+        else if(exp[i]==')'){
+            if(st.empty() == false){
+               if(st.top()=='(')
+                  st.pop();
+            }
+                else
+                    return false;
+                        }
+        
+        
+            else if(exp[i]=='}'){
+                if(st.empty() == false){
+            if(st.top()=='{')
+                st.pop();
+                }
+                else
+                    return false;
+                        }
+            else if(exp[i]==']'){
+                if(st.empty() == false){
+            if(st.top()=='[')
+                st.pop();
+                }
+                else
+                    return false;
+        }
+            
+        }
+       
+    
+    if(st.empty()==true){
+        return true;
+    }
+    else
+        return false;
+}
+
+int main() {
+    char input[100000];
+    cin.getline(input, 100000);
+    if(checkBalanced(input)) {
+        cout << "true" << endl;
+    }
+    else {
+        cout << "false" << endl;
+    }
+}
