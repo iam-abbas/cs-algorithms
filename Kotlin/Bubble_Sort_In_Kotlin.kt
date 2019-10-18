@@ -8,12 +8,12 @@ fun main (args : Array<String>) {
     for (i in 0 until n) {
         arr[i] = readLine()!!.toInt()
     }
-    insertionSort(arr)
+    bubbleSort(arr)
 }
 
 //function for bubble sort
 
-fun insertionSort(arr : Array<Int>) {
+fun bubbleSort(arr : Array<Int>) {
     var n = arr.size
     var temp : Int
     for(i in 0 until  n-1) {

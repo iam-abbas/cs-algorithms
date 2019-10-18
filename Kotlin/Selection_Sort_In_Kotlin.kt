@@ -8,12 +8,12 @@ fun main (args : Array<String>) {
     for (i in 0 until n) {
         arr[i] = readLine()!!.toInt()
     }
-    insertionSort(arr)
+    selectionSort(arr)
 }
 
-//function for insertion sort
+//function for selection sort
 
-fun insertionSort(arr : Array<Int>) {
+fun selectionSort(arr : Array<Int>) {
     var n = arr.size
     var index : Int
     var min : Int
