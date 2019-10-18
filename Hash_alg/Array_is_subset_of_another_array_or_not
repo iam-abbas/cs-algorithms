@@ -1,0 +1,34 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+     int n;
+     cin>>n;
+     vector<int>arr(n);
+     unordered_map<int,int>hash;
+     for(int i = 0 ; i < n ; i++)
+      {
+         cin>>arr[i];              //input first array
+         hash[arr[i]]++;           //putting elements inside hash
+      }
+     int m;
+     cin>>m;
+     vector<int>brr(m);
+
+    for(int i = 0; i < m ; i++)
+      cin>>brr[i];              //input second array
+
+    for(int i = 0 ; i < m; i++)
+         {
+           if(hash.find(brr[i])==hash.end())   //checking that element of second array is present in hash or not
+             {
+               cout<<"No";
+               return 0;
+             }
+         }
+
+      cout<<"Yes";
+
+
+}
