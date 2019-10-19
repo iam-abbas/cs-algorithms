@@ -1,4 +1,4 @@
-#include <list>
+#include <stack>
 #include <string>
 #include <assert.h>
 
@@ -9,39 +9,62 @@
 */
 bool stringBracketIsBalancedCheck(const std::string& input_string) {
 
-	char left_bracket, right_bracket; 
-	std::list<char> bracket_list;
-	
-	//parse the string for parentheses
-	for (char ch : input_string)
+	char left_bracket, right_bracket;
+	std::stack<char> bracket_stack;
+
+	//parse the string for parentheses (right to left)
+	for (int i = input_string.length(); i >= 0; --i)
 	{
-		if (ch == '(' || ch == ')') bracket_list.push_back(ch);
+		char ch = input_string[i];
+		if (ch == '(' || ch == ')') bracket_stack.push(ch);
 	}
-	
-	//both stacks must equal each other
-	if (bracket_list.size() % 2 != 0) return false;
-	
-	while (bracket_list.size())
+
+	//stack must have an even number of elements
+	if (bracket_stack.size() % 2 != 0) return false;
+
+	while (bracket_stack.size())
 	{
 		//pull the first element - must be a left bracket
-		left_bracket = bracket_list.front();
+		left_bracket = bracket_stack.top();
 		if (left_bracket != '(') return false;
+	
+		//remove the left bracket from the stack
+		bracket_stack.pop();
+
+		std::stack<char> temp_stack;
 		
 		//find the first right bracket
-		auto itr = std::find(bracket_list.cbegin(), bracket_list.cend(), ')');
-		
-		if (itr != bracket_list.cend())
-		{	
-			bracket_list.erase(itr);
-			bracket_list.pop_front();
+		while (bracket_stack.size())
+		{
+			char top_value = bracket_stack.top();
+			if (top_value == ')')
+			{
+				//remove the right bracket from the original stack
+				bracket_stack.pop();
+				//push all the temp_stack values back onto the original stack maintaining the order
+				while (temp_stack.size()) 
+				{
+					bracket_stack.push(temp_stack.top());
+					temp_stack.pop();
+				}
+				break;
+			}
+			else
+			{
+				//if not a right bracket, push onto the temporary stack and pop from original
+				temp_stack.push(bracket_stack.top());
+				bracket_stack.pop();
+				//if all the chars in the original stack are not the right bracket = unbalanced
+				if (bracket_stack.size() == 0)
+					return false;
+			}
 		}
-		else
-			return false;
 	}
 	return true;
 }
 
-// Driver  code 
+
+// Driver  code with unit tests
 int main()
 {
 	//test with no strings
@@ -63,13 +86,11 @@ int main()
 	
 	//tests with n brackets
 	assert(stringBracketIsBalancedCheck("(())") == true);
-	
 	assert(stringBracketIsBalancedCheck("(()()()()())") == true);
 	assert(stringBracketIsBalancedCheck("(()()()()()") == false);
-	
 	assert(stringBracketIsBalancedCheck("((((((()))))))") == true);
-
 	assert(stringBracketIsBalancedCheck("((((((())))))") == false);
 	assert(stringBracketIsBalancedCheck("((((((()))))()") == false);
+	
 	return 0;
 }
