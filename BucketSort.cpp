@@ -1,38 +1,69 @@
-// C++ BucketSort 
-#include <iostream> 
-#include <algorithm> 
-#include <vector> 
-using namespace std; 
+#include <cstdio>
+#include <climits>
 
-// Function to sort arr[] of size n using bucket sort 
-void bucketSort(float arr[], int n) 
-{ 
-	//Create n empty buckets 
-	vector<float> b[n]; 	
-	// adds array elements in different buckets 
-	for (int i=0; i<n; i++) 
-	{ 
-	int bi = n*arr[i]; // Index in bucket 
-	b[bi].push_back(arr[i]); 
-	} 
-	// Sort buckets individually 
-	for (int i=0; i<n; i++) 
-	sort(b[i].begin(), b[i].end()); 
-	//Concatenate all buckets into arr[] 
-	int index = 0; 
-	for (int i = 0; i < n; i++) 
-		for (int j = 0; j < b[i].size(); j++) 
-		arr[index++] = b[i][j]; 
-} 
+#define INF INT_MAX
 
-//Main Funct
-int main() 
-{ 
-	float arr[] = {0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434}; 
-	int n = sizeof(arr)/sizeof(arr[0]); 
-	bucketSort(arr, n); 
-	cout << "Sorted array is \n"; 
-	for (int i=0; i<n; i++) 
-	cout << arr[i] << " "; 
-	return 0; 
+#define ELEMENT_COUNT 100000
+#define ELEMENT_RANGE (1 << 17)
+#define GROUP_RANGE (1 << 2)
+
+using namespace std;
+
+int n, d[ELEMENT_COUNT];
+
+struct node
+{
+  int v, next;
+}A[ELEMENT_COUNT + 1];
+int head[ELEMENT_RANGE / GROUP_RANGE], cnt[ELEMENT_RANGE / GROUP_RANGE], vc = 1;
+
+void insert(int v)
+{
+  int group = v / GROUP_RANGE;
+  A[vc].next = head[group];
+  head[group] = vc;
+  A[vc].v = v;
+  cnt[group]++;
+  vc++;
+}
+
+void bucket_sort()
+{
+  for (int i = 0; i < n; i++)
+  {
+    insert(d[i]);
+  }
+  int ptr = 0;
+  for (int i = 0; i < ELEMENT_RANGE / GROUP_RANGE; i++)
+  {
+    for (int j = 0; j < cnt[i]; j++)
+    {
+      int minv = INF, ord;
+      for (int cur = head[i]; cur != 0; cur = A[cur].next)
+      {
+        if (A[cur].v < minv)
+        {
+          minv = A[cur].v;
+          ord = cur;
+        }
+      }
+      d[ptr++] = minv;
+      A[ord].v = INF;
+    }
+  }
+}
+
+int main()
+{
+  scanf("%d", &n);
+  for (int i = 0; i < n; i++)
+  {
+    scanf("%d", &d[i]);
+  }
+  bucket_sort();
+  for (int i = 0; i < n; i++)
+  {
+    printf("%d ", d[i]);
+  }
+  return 0;
 }
