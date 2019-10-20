@@ -1,6 +1,6 @@
 # Longest common subsequence
 
-{
+
 def longest_common_subsequence(x, y):
     """Longest common subsequence
 
@@ -34,4 +34,4 @@ def longest_common_subsequence(x, y):
             j -= 1
             sol.append(x[i])
     return ''.join(sol[::-1])    # liste inversée
-}
+
