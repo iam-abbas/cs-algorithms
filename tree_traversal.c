@@ -63,7 +63,7 @@ int main()
 }
 void tree_initialize(Tree *tree)
 {
-    tree->root==NULL;
+    tree->root=NULL;
 }
 
 Node* create_Node(int data){
