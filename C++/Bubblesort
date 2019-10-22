@@ -1,13 +1,14 @@
 /* C++ Program - Bubble Sort */
 		
-#include<iostream.h>
-#include<conio.h>
-void main()
+#include<bits/stdc++.h>
+using namespace std;
+int main()
 {
-	clrscr();
-	int n, i, arr[50], j, temp;
+	
+	int n, i, j, temp;
 	cout<<"Enter total number of elements :";
 	cin>>n;
+	int arr[n];
 	cout<<"Enter "<<n<<" numbers :";
 	for(i=0; i<n; i++)
 	{
@@ -32,5 +33,5 @@ void main()
 	{
 		cout<<arr[i]<<" ";
 	}
-	getch();
+	return 0;
 }
