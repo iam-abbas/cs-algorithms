@@ -1,0 +1,103 @@
+/*input
+1
+4 4
+abab
+baba
+*/
+
+
+/* 
+	Merging two strings into one string such that :
+	1. For each string, their character occurs in the same relative order in Merged string as it occurs in the base strings, 
+	2. The minimum number of blocks consisting of consecutive identical characters is minimum in Merged string. 
+*/
+
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+typedef unsigned long long int ll;
+typedef long int ln;
+#define s(x) scanf("%d", &x)
+#define loop(i, n) for(i =0 ; i<n ;i++)
+
+
+int fun(char s[], char str[],int n, int m)
+{
+	int a[m+1][n+1];
+   	for(int i =0; i<=n  ;i ++)
+   	{
+	   a[0][i]= i;  
+	}
+
+    for(int i =1; i<=m  ;i ++)
+    {
+	   a[i][0]= i;
+    }
+
+    for(int i =1; i<= m ; i++)
+    {
+        for(int j =1 ; j<= n; j++)
+        {
+            if( str [i-1] == s[j-1] )
+                a[i][j] = min(a[i][j-1], min(a[i-1][j], a[i-1][j-1])) +1;
+            if( str [i-1] != s[j-1] )
+                a[i][j]= min (a[i][j-1], a[i-1][j])+1;
+
+   		}
+    }
+    return a[m][n];
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int n,m , i ,j;
+        cin >> n>> m;
+        string x,b;
+        cin >>x>>b;
+        int k =1;
+        for ( i =1; i< n; i++)
+        {
+            if( x[i] != x[i-1])
+                k++;
+        }
+        n=k;
+        char s[n];
+        s[0]=x[0];k=1;
+        for ( i =1; i< x.size(); i++)
+        {
+            if( x[i] != x[i-1])
+            {
+               s[k]=x[i];
+               k++;
+            }
+        }
+
+        k =1;
+        for ( i =1; i< m; i++)
+        {
+           if( b[i] != b[i-1])
+            k++;
+        }
+        m=k;
+        char str[k];
+        str[0]=b[0];k=1;
+	        for ( i =1; i< b.size(); i++)
+        {
+            if( b[i] != b[i-1])
+            {
+               str[k]=b[i];
+               k++;
+            }
+        }
+
+		int ans = fun(s, str, n, m);           
+        cout<<ans<<endl;
+    }
+    return 0;
+}
