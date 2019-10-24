@@ -8,4 +8,4 @@ def fastfibonacci(i):
     else: 
         return fastfibonacci(i-1)+fastfibonacci(i-2) 
   
-print(Fibonacci(2)) 
+print(fastfibonacci(2)) 
