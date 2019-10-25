@@ -39,4 +39,7 @@ int main()
 	}
 	else {
 		cout << power(x,y) << endl;
+	}
+	return 0;
 }
+
