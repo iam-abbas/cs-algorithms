@@ -10,7 +10,7 @@ def checker(inp):
   pairs[']']='['
   stack=[]
   for i in list(inp):
-    if i==']' and i=='}' and i==')':
+    if i==']' or i=='}' or i==')':
       len(stack)==0 or stack.pop() != pairs[i]  ? return False:pass
     else :
       stack.push(i)
