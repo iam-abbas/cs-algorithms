@@ -25,11 +25,17 @@ def multiply(F, M):
   
 def power(F, n): 
   
+    if( n == 0 or n == 1): 
+        return; 
     M = [[1, 1], 
-         [1, 0]] 
-  
-    for i in range(2, n + 1): 
+         [1, 0]]; 
+          
+    power(F, n // 2) 
+    multiply(F, F) 
+          
+    if (n % 2 != 0): 
         multiply(F, M) 
-  
+
+
 n = 11
 print(fib(n)) 
