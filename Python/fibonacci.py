@@ -11,21 +11,42 @@ def Fibonacci(n):
   else: 
     return Fibonacci(n-1)+Fibonacci(n-2) 
   
-print(Fibonacci(9))
-
 #Fibonacci with Looping
-def FibonacciLoop(n): 
-  for i in range(9):
+def FibonacciLoop(n):
+  if n == 1:
+    return 0
+  for i in range(1 + n):
     if i == 0:
-        print(0)
-        after = 1
+        sums = after = 0
     elif i == 1:
-        print(1)
-        before = 1
+        sums = before = 1
     else:
         sums = before + after
-        print(sums)
         before = after
         after = sums
+  return sums
         
-print(FibonacciLoop(9))
+# Fibonacci with matrix multiplication
+# (f[1], f[2]) * P = (f[2], f[3])
+# (f[1], f[2]) * P^n = (f[n+1], f[n+2]) 
+# P = [[0, 1],
+#      [1, 1]]
+def FibonacciBinPow(n):
+    m = [[0, 1],[1, 1]]
+
+    def multiply(a, b):
+        # basic 2x2 matrix multiplication
+        return [[a[0][0]*b[0][0]+a[0][1]*b[1][0], a[0][0]*b[0][1]+a[0][1]*b[1][1]],[a[1][0]*b[0][0]+a[1][1]*b[1][0], a[1][0]*b[0][1]+a[1][1]*b[1][1]]]
+
+    def binpow(m, p):
+        if p == 0:
+            return [[1, 0], [0, 1]]
+        if p % 2 == 0:
+            c = binpow(m, p / 2)
+            return multiply(c, c)
+        return multiply(m, binpow(m, p - 1))
+
+    return binpow([[0, 1], [1, 1]], n-1)[1][0]
+
+for i in range(1, 10):
+    print(Fibonacci(i), FibonacciLoop(i), FibonacciBinPow(i))
