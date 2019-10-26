@@ -3,6 +3,7 @@
 
 #include<iostream>
 using namespace std;
+#define MAXN 20
 
 // Function to Calculate value of Binomial Coefficient C(n, k)
 long long binomialCoefficient(long long n, long long k)
