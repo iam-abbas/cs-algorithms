@@ -28,5 +28,8 @@ def eggDrop(n, k):
 if __name__ == "__main__": 
   
     n = 2
-    k = 10
+    k = 36 
+    #or
+    #n=int(input("Enter number of eggs : "))
+    #k=int(input("Enter number of floors : "))
     print("Minimum number of trials in worst case with", n, "eggs and", k, "floors is", eggDrop(n, k)) 
