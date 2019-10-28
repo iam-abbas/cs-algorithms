@@ -1,0 +1,63 @@
+//find whether String C is formed by interleaving String A and String B
+
+
+#include <bits/stdc++.h>
+using namespace std;
+string s1,s2,s3;
+int dp[102][102][102];//used to store each state
+bool rec(int i,int j,int k)
+{
+    if(dp[i][j][k]!=-1)
+    return dp[i][j][k];
+    if(i==s1.length()&&j==s2.length()&&k<s3.length()) //base case
+    return dp[i][j][k]=0;
+
+    if(i==s1.length()&&j==s2.length()&&k==s3.length()) //base case
+    return dp[i][j][k]=1;
+    int ans=0;
+    if((i<s1.length())&&s1[i]==s3[k]) //visiting other states
+    ans=ans|rec(i+1,j,k+1);
+    if(j<s2.length()&&s2[j]==s3[k])
+    ans|=rec(i,j+1,k+1);
+
+    if(i==s1.length()&&s2[j]!=s3[k])
+    return 0;
+    if(j==s2.length()&&s1[i]!=s3[k])
+    return 0;
+    if(i<s1.length()&&j<s2.length()&&s1[i]!=s3[k]&&s2[j]!=s3[k])
+    return 0;
+
+    return dp[i][j][k]=ans;
+
+}
+
+int isInterleave(string A, string B, string C) {
+
+    memset(dp,-1,sizeof(dp));
+    s1=A;
+    s2=B;
+    s3=C;
+    return rec(0,0,0);
+
+}
+
+int main()
+{
+
+    string a,b,c;
+    cin >>  a >>  b >>  c;
+
+    if(isInterleave(a,b,c))
+    {
+        cout <<  "String C is formed by interleaving String A and String B" <<  endl;
+
+    }
+    else
+    {
+        cout <<  "String C cannot be formed by interleaving String A and String B" <<  endl;
+    }
+}
+//Time complexity: O(N3)
+//Space complexity: O(N3)
+
+
