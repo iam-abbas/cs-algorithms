@@ -1,0 +1,90 @@
+#include<stdio.h>
+void push(char *s,int*,char);
+char pop(char* s, int*);
+int isempty(int);
+int match(char *);
+int main()
+{
+  char expr[100];
+  printf("Enter the expression\n");
+  scanf("%s",expr);
+  int result=match(expr);
+  if(result)
+   printf("Matching succeeds\n");
+ else
+   printf("matching fails\n");
+}
+
+  int match( char *expr)
+  {
+    char ch,x,s[100];
+    int top,i;
+    top=-1;
+    i=0;
+    while(expr[i]!='\0')
+    {
+       ch=expr[i];
+       switch(ch)
+       {
+         case '(':
+         case '{':
+         case '[': push(s,&top,ch);
+                    break;
+         case ')':if(!isempty(top))
+                  {
+                     x=pop(s,&top);
+                     if(x!='(')
+                       return 0;
+                     break;
+                  }
+                  else
+                    return 0;
+
+         case '}':if(!isempty(top))
+                  {
+                     x=pop(s,&top);
+                     if(x!='{')
+                       return 0;
+                     break;
+                   }
+                  else
+                    return 0;
+
+         case ']':if(!isempty(top))
+                  {
+                     x=pop(s,&top);
+                     if(x!='[')
+                       return 0;
+                     break;
+                   }
+                  else
+                    return 0;
+        }
+        i++;
+     }
+     if(isempty(top))
+        return 1;
+      return 0;
+   }
+
+
+ void push(char *s,int *t,char x)
+  {
+   ++*t;
+   s[*t]=x;
+  }
+
+  char pop(char *s, int *t)
+  {
+    char x;
+    x=s[*t];
+    --*t;
+    return x;
+  }
+
+ int isempty(int top)
+  {
+    if(top==-1)
+      return 1;
+     return 0;
+  }
