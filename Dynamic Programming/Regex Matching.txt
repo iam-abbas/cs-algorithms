@@ -6,9 +6,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+string s1,s2;
+
 
 int dp[10000][200];// to store value of each state
-string s1,s2;
 
 bool rec(int i,int j)
 {
