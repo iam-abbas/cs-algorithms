@@ -1,5 +1,5 @@
 //Program to find next greater number for each element in an array.
-//Next greater element for an element 'x' is first greater element present on the right side of 'x' in the arrau
+//next greater element for an element 'x' is first greater element present on the right side of 'x' in the arrau
 
 
 
