@@ -1,0 +1,95 @@
+//Find largest rectangle area in a histogram where height of n bars is given and width of each bar is 1
+
+
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <vector>
+using namespace std;
+
+
+int largestRectangleArea(vector<int> &A)
+{
+
+    //Use stack to get next smallest element of each A[i] in there left and right side
+    //vector pair is used to store index of next smallest for each A[i] in the right and left side of A[i];
+
+    const int INF=-1e9;
+
+    stack <int> s;
+    int n=A.size();
+    vector <pair <int,int> > v;
+
+    for(int i=0;i<n;i++)
+    {
+        v.push_back({INF,INF});
+    }
+
+    s.push(0);
+    for(int i=1;i<n;i++)
+    {
+          while(!s.empty()&&A[i]<A[s.top()])
+          {
+              v[s.top()].first=i;
+              s.pop();
+          }
+          s.push(i);
+
+    }
+
+    while(!s.empty()){
+        v[s.top()].first=n;
+        s.pop();
+    }
+
+
+
+    s.push(n-1);
+        for(int i=n-2;i>=0;i--)
+       {
+          while(!s.empty()&&A[i]<A[s.top()])
+          {
+              v[s.top()].second=i;
+                s.pop();
+          }
+          s.push(i);
+        }
+
+        while(!s.empty()){
+        v[s.top()].second=-1;
+        s.pop();
+       }
+
+
+
+         int ans=0;
+        for(int i=0;i<n;i++)
+        {
+
+            ans=max(ans,A[i]*(v[i].first-v[i].second-1));// using every bar as the height and calculating area of corresponding histogram
+
+
+        }
+        return ans;
+}
+
+int main()
+{
+    int n;
+    cout << "Enter no of rectangle bars" << endl;
+    cin >>  n;
+    cout <<  "Enter hieght of rectangle bars" <<  endl;
+    vector <int> a(n);
+    for(int i=0;i<n;i++)
+    {
+        cin >> a[i];
+
+    }
+
+  cout <<   "Largest Rectangle area in histogram is " <<    largestRectangleArea(a) << endl ;
+}
+//Time Complexity : O(N)
+//Space Complexity : O(N)
+
+
+
