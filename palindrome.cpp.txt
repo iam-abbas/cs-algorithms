@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+int n,num,d,rev=0;
+cout << "enter the positive number";
+cin >> num;
+n=num;
+do
+{
+d=num%10;
+rev=(rev*10)+d;
+num=num/10;
+}
+while(num!=0);
+cout << "the reverse of the number is:"<< rev << end1;
+if(n==rev)
+cout << "the number is palindrome";
+else
+cout << "the number is not palindrome";
+return 0;
+}
