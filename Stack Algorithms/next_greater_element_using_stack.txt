@@ -1,0 +1,53 @@
+//Program to find next greater number for each element in an array.
+//next greater element for an element 'x' is first greater element present on the right side of 'x' in the arrau
+
+
+
+
+#include <iostream>
+#include <stack>
+using namespace std;
+
+      int main()
+      {
+
+             int  n;
+             cin >>  n; // n is no of integers
+
+              int  a[n+1];// array for integers
+             for(int i=1;i<=n;i++)
+             {
+                   cin >> a[i];
+             }
+
+             stack <int > s;
+
+             s.push(a[1]);//using stack to keep track of elements whose next greater has not been found
+
+
+             for(int i=2;i<=n;i++)
+             {
+                 while((!s.empty())&&(s.top()<a[i]))
+                 {
+
+                   cout <<  "Next Greater element for " << s.top() << " is " <<  a[i] <<  endl;
+                   s.pop();
+                 }
+
+                 s.push(a[i]);
+             }
+             while(!s.empty())//elements that are left have no greater element
+             {
+
+                 cout << "There is no next greater element of " << s.top() << " in the array " <<  endl;
+                 s.pop();
+             }
+
+             //Time Complexity : O(N)
+             //Space Complexity: O(N)
+
+             // where N is number of integers given in the input
+
+             // Note: You can also find next smallest number ,just by changing the sign '<' to '>' in line 30.
+      }
+
