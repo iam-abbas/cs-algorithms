@@ -1,4 +1,4 @@
-// A Dynamic Programming based Python Program for the Egg Dropping Puzzle 
+#A Dynamic Programming based Python Program for the Egg Dropping Puzzle 
 import sys  
   
 # Function to get minimum number of trials  
