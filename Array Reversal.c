@@ -9,7 +9,6 @@ int main()
     for(i = 0; i < num; i++) {
         scanf("%d", arr + i);
     }
-    /* Write the logic to reverse the array. */ 
     int* left_ptr = arr;
     int* right_ptr;
     int temp;
