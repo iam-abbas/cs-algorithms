@@ -1,4 +1,5 @@
 //hackerearth problem picked from noveasy19
+//Problem url:https://www.hackerearth.com/problem/algorithm/money-exchange-48c4a575/
 
 /*question:There are n types of money denomination in your country having values a1,a2,..an .
 You went to a shop to buy a product worth p units,
@@ -10,15 +11,17 @@ else print "NO".*/
 
 //Program
 #include<bits/stdc++.h>
+
 using naemespace std;
-#define ll long long int
+
+#define llt long long int
 int main()
 {
-    int n,q,i;
+    llt t n,q;
     cin>>n>>q;
     //long long int type
-    ll a[n],p,g=0;
-    for(i=0;i<n;i++)
+    llt a[n],g=0;
+    for(llt i=0;i<n;i++)
     {
         cin>>a[i];
         //__gcd is inbuild funtion in cpp to calculate gcd of two numbers
@@ -29,6 +32,7 @@ int main()
     
     while(q--)
     {
+     llt p;
      cin>>p;
      if(__gcd(g,p)==g)
         cout<<"YES"<<endl;
