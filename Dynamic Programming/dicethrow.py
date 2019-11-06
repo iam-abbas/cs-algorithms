@@ -36,5 +36,3 @@ print(findWays(2, 2, 3))
 print(findWays(6, 3, 8)) 
 print(findWays(4, 2, 5)) 
 print(findWays(4, 3, 5)) 
-
-# This code is contributed by ankush_953 
